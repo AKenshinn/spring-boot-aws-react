@@ -34,7 +34,7 @@ public class UserProfile {
     UserProfile that = (UserProfile) o;
     return Objects.equals(uuid, that.getUuid())
         && Objects.equals(username, that.getUsername())
-        && Objects.equals(imageLink, that.getImageLink());
+        && Objects.equals(Optional.ofNullable(imageLink), that.getImageLink());
   }
 
   @Override
