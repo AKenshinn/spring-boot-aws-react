@@ -14,8 +14,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AmazonConfig {
 
-  @Value("${aws.credentials.accesskey}") private String awsAccessKey;
-  @Value("${aws.credentials.secretkey}") private String awsSecretKey;
+  @Value("${aws.credentials.access-key}") private String awsAccessKey;
+  @Value("${aws.credentials.secret-key}") private String awsSecretKey;
   
   @Bean
   public AmazonS3 amazonS3() {
