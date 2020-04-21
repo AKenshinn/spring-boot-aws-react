@@ -29,3 +29,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Confidential Config ###
+/src/main/resources/application-dev.properties
