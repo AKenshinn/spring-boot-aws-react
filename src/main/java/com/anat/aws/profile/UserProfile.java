@@ -1,6 +1,7 @@
 package com.anat.aws.profile;
 
 import java.util.Objects;
+import java.util.Optional;
 import java.util.UUID;
 
 import lombok.Getter;
@@ -20,6 +21,10 @@ public class UserProfile {
     this.uuid = uuid;
     this.username = username;
     this.imageLink = imageLink;
+  }
+
+  public Optional<String> getImageLink() {
+    return Optional.ofNullable(imageLink);
   }
 
   @Override
