@@ -10,7 +10,11 @@ const UserProfile = () => {
   const fetchUserProfiles = () => {
     axios.get("http://localhost:8080/api/v1/user-profile").then(res => {
       console.log(res);
+
       setUserProfiles(res.data);
+
+      
+
     })
   };
 
@@ -25,17 +29,33 @@ const UserProfile = () => {
         <br />
         <h1>{userProfile.username}</h1>
         <p>{userProfile.uuid}</p>
-        <Dropzone />
+        <Dropzone {...userProfile} />
         <br />
       </div>
     )
   });
 }
 
-function Dropzone() {
+function Dropzone({ uuid }) {
   const onDrop = useCallback(acceptedFiles => {
     const file = acceptedFiles[0];
     console.log(file);
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    axios.post(`http://localhost:8080/api/v1/user-profile/${uuid}/image/upload`, 
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data"
+          }
+        }
+    ).then(() => {
+      console.log("File upload successfully");
+    }).catch(err => {
+      console.log(err);
+    });
   }, [])
   const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
 
