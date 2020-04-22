@@ -62,7 +62,7 @@ public class UserProfileService {
 
   public byte[] downloadUserProfileImage(UUID uuid) {
     UserProfile user = getUserProfileOrThrow(uuid);
-    String path = String.format("%s/%s%s",
+    String path = String.format("%s/%s",
         BucketName.PROFILE_IMAGE.getBucketName(),
         user.getUuid());
     
